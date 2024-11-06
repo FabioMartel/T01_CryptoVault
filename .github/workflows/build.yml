@@ -31,11 +31,11 @@ jobs:
             echo "exists=false" >> $GITHUB_ENV
           fi
   
-      - name: Build Docker Image
-        run: |
-          docker build -t fabio22/as221s6_t01_cryptovault:$GITHUB_SHA .
+      - name: Build Docker image
+        if: env.exists == 'false'
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/as221s6_t01_cryptovault:v1 .
 
-      - name: Push Docker Image to Docker Hub
-        run: |
-          docker push fabio22/as221s6_t01_cryptovault:$GITHUB_SHA
+      - name: Push Docker image to Docker Hub
+        if: env.exists == 'false'
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/as221s6_t01_cryptovault:v1
 
