@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  app:
+    image: fabio22/as221s6_t01_cryptovault:v1
+    container_name: FabioMartel_cryptovault
+    ports:
+      - "4200:80"
