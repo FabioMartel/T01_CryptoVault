@@ -32,10 +32,10 @@ jobs:
           fi
   
       - name: Build Docker image
-        if: env.exists == 'true'
+        if: env.exists == 'false'
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/as221s6_t01_cryptovault:v1 .
 
       - name: Push Docker image to Docker Hub
-        if: env.exists == 'true'
+        if: env.exists == 'false'
         run: docker push ${{ secrets.DOCKER_USERNAME }}/as221s6_t01_cryptovault:v1
 
